@@ -1,14 +1,5 @@
 package us.codecraft.webmagic.downloader.selenium;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriverService;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -21,6 +12,17 @@ import java.util.Properties;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author code4crafter@gmail.com <br>
@@ -134,9 +136,9 @@ class WebDriverPool {
 			sCaps.setBrowserName("phantomjs");
 			mDriver = new RemoteWebDriver(new URL(driver), sCaps);
 		} else if (driver.equals(DRIVER_FIREFOX)) {
-			mDriver = new FirefoxDriver(sCaps);
+			mDriver = new FirefoxDriver(new FirefoxOptions(sCaps));
 		} else if (driver.equals(DRIVER_CHROME)) {
-			mDriver = new ChromeDriver(sCaps);
+			mDriver = new ChromeDriver(new ChromeOptions().merge(sCaps));
 		} else if (driver.equals(DRIVER_PHANTOMJS)) {
 			mDriver = new PhantomJSDriver(sCaps);
 		}
