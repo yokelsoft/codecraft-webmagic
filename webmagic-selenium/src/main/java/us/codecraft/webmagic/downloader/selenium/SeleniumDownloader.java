@@ -1,23 +1,21 @@
 package us.codecraft.webmagic.downloader.selenium;
 
+
+import java.io.Closeable;
+import java.io.IOException;
+import java.util.Map;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.downloader.Downloader;
-import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.PlainText;
-
-import java.io.Closeable;
-import java.io.IOException;
-import java.util.Map;
 
 /**
  * 使用Selenium调用浏览器进行渲染。目前仅支持chrome。<br>
@@ -108,7 +106,7 @@ public class SeleniumDownloader implements Downloader, Closeable {
 		String content = webElement.getAttribute("outerHTML");
 		Page page = new Page();
 		page.setRawText(content);
-		page.setHtml(new Html(content, request.getUrl()));
+		// page.setHtml(new Html(content, request.getUrl()));
 		page.setUrl(new PlainText(request.getUrl()));
 		page.setRequest(request);
 		webDriverPool.returnToPool(webDriver);

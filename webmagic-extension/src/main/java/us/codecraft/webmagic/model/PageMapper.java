@@ -1,8 +1,8 @@
 package us.codecraft.webmagic.model;
 
-import us.codecraft.webmagic.Page;
 
 import java.util.List;
+import us.codecraft.webmagic.Page;
 
 /**
  * @author code4crafer@gmail.com
@@ -10,20 +10,24 @@ import java.util.List;
  */
 public class PageMapper<T> {
 
-    private Class<T> clazz;
+    private final Class<T> clazz;
 
-    private PageModelExtractor pageModelExtractor;
+    private final PageModelExtractor pageModelExtractor;
 
     public PageMapper(Class<T> clazz) {
         this.clazz = clazz;
         this.pageModelExtractor = PageModelExtractor.create(clazz);
     }
 
+    @SuppressWarnings("unchecked")
     public T get(Page page) {
-        return (T) pageModelExtractor.process(page);
+        Object result = pageModelExtractor.process(page);
+        return (result != null && clazz.isAssignableFrom(result.getClass())) ? (T) result : null ;
     }
 
+    @SuppressWarnings("unchecked")
     public List<T> getAll(Page page) {
-        return (List<T>) pageModelExtractor.process(page);
+        Object result = pageModelExtractor.process(page);
+        return (result instanceof List) ? (List<T>) pageModelExtractor.process(page) : null;
     }
 }

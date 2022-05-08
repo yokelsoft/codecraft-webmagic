@@ -23,7 +23,7 @@ public class HtmlTest {
 	@Ignore("not work in jsoup 1.8.x")
 	@Test
 	public void testDisableJsoupHtmlEntityEscape() throws Exception {
-		Html.DISABLE_HTML_ENTITY_ESCAPE = true;
+		// Html.DISABLE_HTML_ENTITY_ESCAPE = true;
 		Html html = new Html("aaaaaaa&b");
 		assertThat(html.regex("(aaaaaaa&b)").toString()).isEqualTo("aaaaaaa&b");
 	}

@@ -62,6 +62,7 @@ import us.codecraft.webmagic.utils.WMCollections;
  * @see Pipeline
  * @since 0.1.0
  */
+@SuppressWarnings({"unused", "JavadocLinkAsPlainText"})
 public class Spider implements Runnable, Task {
 
     protected Downloader downloader;
@@ -100,9 +101,9 @@ public class Spider implements Runnable, Task {
 
     protected boolean destroyWhenExit = true;
 
-    private ReentrantLock newUrlLock = new ReentrantLock();
+    private final ReentrantLock newUrlLock = new ReentrantLock();
 
-    private Condition newUrlCondition = newUrlLock.newCondition();
+    private final Condition newUrlCondition = newUrlLock.newCondition();
 
     private List<SpiderListener> spiderListeners;
 
@@ -251,7 +252,7 @@ public class Spider implements Runnable, Task {
      * @return this
      */
     public Spider clearPipeline() {
-        pipelines = new ArrayList<Pipeline>();
+        pipelines = new ArrayList<>();
         return this;
     }
 
@@ -462,7 +463,6 @@ public class Spider implements Runnable, Task {
             logger.info("page status code error, page {} , code: {}", request.getUrl(), page.getStatusCode());
         }
         sleep(site.getSleepTime());
-        return;
     }
 
     private void onDownloaderFail(Request request) {
@@ -561,7 +561,7 @@ public class Spider implements Runnable, Task {
         return collectorPipeline.getCollected();
     }
 
-    protected CollectorPipeline getCollectorPipeline() {
+    protected CollectorPipeline<ResultItems> getCollectorPipeline() {
         return new ResultItemsCollectorPipeline();
     }
 
