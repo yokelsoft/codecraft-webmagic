@@ -14,23 +14,23 @@
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-io.version>2.11.0</commons-io.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
-        <fastjson.version>2.0.2</fastjson.version>
+        <fastjson.version>1.2.75</fastjson.version>
         <groovy-all.version>3.0.10</groovy-all.version>
         <guava.version>31.1-jre</guava.version>
         <htmlcleaner.version>2.26</htmlcleaner.version>
         <httpclient.version>4.5.13</httpclient.version>
         <httpcore.version>4.4.14</httpcore.version>
         <jedis.version>3.7.1</jedis.version>
-        <jruby.version>9.3.4.0</jruby.version>
-        <json-path.version>2.7.0</json-path.version>
+        <jruby.version>9.2.14.0</jruby.version>
+        <json-path.version>2.6.0</json-path.version>
         <junit.version>4.13.2</junit.version>
         <jython.version>2.7.2</jython.version>
-        <log4j2.version>2.17.2</log4j2.version>
+        <log4j.version>1.2.17</log4j.version>
         <mockito-all.version>1.10.19</mockito-all.version>
         <moco.version>1.1.0</moco.version>
-        <phantomjsdriver.version>1.5.0</phantomjsdriver.version>
-        <saxon-he.version>11.3</saxon-he.version>
-        <selenium-java.version>4.1.4</selenium-java.version>
+        <phantomjsdriver.version>1.2.0</phantomjsdriver.version>
+        <saxon-he.version>10.3</saxon-he.version>
+        <selenium-java.version>3.141.59</selenium-java.version>
         <slf4j.version>1.7.36</slf4j.version>
         <spring-version>4.0.0.RELEASE</spring-version>
         <xsoup.version>0.3.2</xsoup.version>
@@ -117,6 +117,11 @@
                 <version>${slf4j.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>us.codecraft</groupId>
                 <artifactId>xsoup</artifactId>
                 <version>${xsoup.version}</version>
@@ -139,11 +144,9 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-bom</artifactId>
-                <version>${log4j2.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.assertj</groupId>
@@ -197,7 +200,7 @@
                 <version>${htmlcleaner.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.codeborne</groupId>
+                <groupId>com.github.detro</groupId>
                 <artifactId>phantomjsdriver</artifactId>
                 <version>${phantomjsdriver.version}</version>
             </dependency>

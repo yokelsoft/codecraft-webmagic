@@ -1,7 +1,5 @@
 package us.codecraft.webmagic.downloader;
 
-
-import java.util.Map;
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthState;
 import org.apache.http.auth.ChallengeState;
@@ -21,6 +19,8 @@ import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.utils.HttpConstant;
 import us.codecraft.webmagic.utils.UrlUtils;
+
+import java.util.Map;
 
 /**
  * @author code4crafter@gmail.com
@@ -66,10 +66,12 @@ public class HttpUriRequestConverter {
         }
 
         RequestConfig.Builder requestConfigBuilder = RequestConfig.custom();
-        requestConfigBuilder.setConnectionRequestTimeout(site.getTimeOut())
-                .setSocketTimeout(site.getTimeOut())
-                .setConnectTimeout(site.getTimeOut())
-                .setCookieSpec(CookieSpecs.STANDARD);
+        if (site != null) {
+            requestConfigBuilder.setConnectionRequestTimeout(site.getTimeOut())
+                    .setSocketTimeout(site.getTimeOut())
+                    .setConnectTimeout(site.getTimeOut())
+                    .setCookieSpec(CookieSpecs.STANDARD);
+        }
 
         if (proxy != null) {
             requestConfigBuilder.setProxy(new HttpHost(proxy.getHost(), proxy.getPort(), proxy.getScheme()));

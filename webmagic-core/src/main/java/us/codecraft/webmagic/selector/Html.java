@@ -1,13 +1,13 @@
 package us.codecraft.webmagic.selector;
 
-
-import java.util.Collections;
-import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Selectable html.<br>
@@ -23,7 +23,7 @@ public class Html extends HtmlNode {
 	 * Disable jsoup html entity escape. It can be set just before any Html instance is created.
      * @deprecated
 	 */
-	// public static boolean DISABLE_HTML_ENTITY_ESCAPE = false;
+	public static boolean DISABLE_HTML_ENTITY_ESCAPE = false;
 
     /**
      * Store parsed document for better performance when only one text exist.

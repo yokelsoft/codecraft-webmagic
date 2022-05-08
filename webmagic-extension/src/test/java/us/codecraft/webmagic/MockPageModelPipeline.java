@@ -1,6 +1,6 @@
 package us.codecraft.webmagic;
 
-import org.junit.Assert;
+import junit.framework.Assert;
 import us.codecraft.webmagic.pipeline.PageModelPipeline;
 
 /**

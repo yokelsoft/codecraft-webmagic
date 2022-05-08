@@ -1,6 +1,6 @@
 package us.codecraft.webmagic.processor;
 
-import org.junit.Assert;
+import junit.framework.Assert;
 import org.junit.Test;
 import us.codecraft.webmagic.*;
 import us.codecraft.webmagic.downloader.MockGithubDownloader;

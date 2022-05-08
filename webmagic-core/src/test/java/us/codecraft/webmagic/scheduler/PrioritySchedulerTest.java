@@ -1,6 +1,6 @@
 package us.codecraft.webmagic.scheduler;
 
-import org.junit.Assert;
+import junit.framework.Assert;
 import org.junit.Test;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
@@ -11,9 +11,9 @@ import us.codecraft.webmagic.Task;
  */
 public class PrioritySchedulerTest {
 
-    private final PriorityScheduler priorityScheduler = new PriorityScheduler();
+    private PriorityScheduler priorityScheduler = new PriorityScheduler();
 
-    private final Task task = new Task() {
+    private Task task = new Task() {
         @Override
         public String getUUID() {
             return "1";
